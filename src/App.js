@@ -7,21 +7,22 @@ function App() {
   const [resultado, setResultado] = useState(0);
 
   useEffect(() => {
+    const calcularPropina = () => {
+      const total = parseFloat(totalCuenta);
+      const propina = parseFloat(porcentajePropina);
+  
+      if (isNaN(total) || isNaN(propina)) {
+        setResultado(0);
+        return;
+      }
+  
+      const totalConPropina = total + (total * propina) / 100;
+      setResultado(totalConPropina.toFixed(2));
+    };
+  
     calcularPropina();
-  }, [totalCuenta, porcentajePropina, calcularPropina]);
-
-  const calcularPropina = () => {
-    const total = parseFloat(totalCuenta);
-    const propina = parseFloat(porcentajePropina);
-
-    if (isNaN(total) || isNaN(propina)) {
-      setResultado(0);
-      return;
-    }
-
-    const totalConPropina = total + (total * propina) / 100;
-    setResultado(totalConPropina.toFixed(2));
-  };
+  }, [totalCuenta, porcentajePropina]);
+  
 
   return (
     <div className='Tarjeta'>
