@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     calcularPropina();
-  }, [totalCuenta, porcentajePropina]);
+  }, [totalCuenta, porcentajePropina, calcularPropina]);
 
   const calcularPropina = () => {
     const total = parseFloat(totalCuenta);
